@@ -65,12 +65,12 @@ class _FakeNumberTriviaModel_4 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-/// A class which mocks [NumberTriviaRepositoryImp].
+/// A class which mocks [NumberTriviaRepositoryImpl].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNumberTriviaRepositoryImp extends _i1.Mock
-    implements _i7.NumberTriviaRepositoryImp {
-  MockNumberTriviaRepositoryImp() {
+class MockNumberTriviaRepositoryImpl extends _i1.Mock
+    implements _i7.NumberTriviaRepositoryImpl {
+  MockNumberTriviaRepositoryImpl() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -197,7 +197,7 @@ class MockNumberTriviaLocalDataSource extends _i1.Mock
           as _i8.Future<_i6.NumberTriviaModel>);
 
   @override
-  _i8.Future<void> cacheNumberTrivia(_i6.NumberTriviaModel? triviaToCache) =>
+  _i8.Future<void> cacheNumberTrivia(_i10.NumberTrivia? triviaToCache) =>
       (super.noSuchMethod(
             Invocation.method(#cacheNumberTrivia, [triviaToCache]),
             returnValue: _i8.Future<void>.value(),
