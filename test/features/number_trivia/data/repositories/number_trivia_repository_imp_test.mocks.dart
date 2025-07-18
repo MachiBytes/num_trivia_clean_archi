@@ -8,8 +8,7 @@ import 'dart:async' as _i8;
 import 'package:dartz/dartz.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:number_trivia_clean_arch/core/errors/failure.dart' as _i9;
-import 'package:number_trivia_clean_arch/core/platform/network_info.dart'
-    as _i4;
+import 'package:number_trivia_clean_arch/core/network/network_info.dart' as _i4;
 import 'package:number_trivia_clean_arch/features/number_trivia/data/datasources/number_trivia_local_data_source.dart'
     as _i3;
 import 'package:number_trivia_clean_arch/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart'
@@ -18,8 +17,6 @@ import 'package:number_trivia_clean_arch/features/number_trivia/data/models/numb
     as _i6;
 import 'package:number_trivia_clean_arch/features/number_trivia/data/repositories/number_trivia_repository_imp.dart'
     as _i7;
-import 'package:number_trivia_clean_arch/features/number_trivia/domain/entities/number_trivia.dart'
-    as _i10;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -108,34 +105,38 @@ class MockNumberTriviaRepositoryImpl extends _i1.Mock
           as _i4.NetworkInfo);
 
   @override
-  _i8.Future<_i5.Either<_i9.Failure, _i10.NumberTrivia>>
+  _i8.Future<_i5.Either<_i9.Failure, _i6.NumberTriviaModel>>
   getConcreteNumberTrivia(int? number) =>
       (super.noSuchMethod(
             Invocation.method(#getConcreteNumberTrivia, [number]),
             returnValue:
-                _i8.Future<_i5.Either<_i9.Failure, _i10.NumberTrivia>>.value(
-                  _FakeEither_3<_i9.Failure, _i10.NumberTrivia>(
+                _i8.Future<
+                  _i5.Either<_i9.Failure, _i6.NumberTriviaModel>
+                >.value(
+                  _FakeEither_3<_i9.Failure, _i6.NumberTriviaModel>(
                     this,
                     Invocation.method(#getConcreteNumberTrivia, [number]),
                   ),
                 ),
           )
-          as _i8.Future<_i5.Either<_i9.Failure, _i10.NumberTrivia>>);
+          as _i8.Future<_i5.Either<_i9.Failure, _i6.NumberTriviaModel>>);
 
   @override
-  _i8.Future<_i5.Either<_i9.Failure, _i10.NumberTrivia>>
+  _i8.Future<_i5.Either<_i9.Failure, _i6.NumberTriviaModel>>
   getRandomNumberTrivia() =>
       (super.noSuchMethod(
             Invocation.method(#getRandomNumberTrivia, []),
             returnValue:
-                _i8.Future<_i5.Either<_i9.Failure, _i10.NumberTrivia>>.value(
-                  _FakeEither_3<_i9.Failure, _i10.NumberTrivia>(
+                _i8.Future<
+                  _i5.Either<_i9.Failure, _i6.NumberTriviaModel>
+                >.value(
+                  _FakeEither_3<_i9.Failure, _i6.NumberTriviaModel>(
                     this,
                     Invocation.method(#getRandomNumberTrivia, []),
                   ),
                 ),
           )
-          as _i8.Future<_i5.Either<_i9.Failure, _i10.NumberTrivia>>);
+          as _i8.Future<_i5.Either<_i9.Failure, _i6.NumberTriviaModel>>);
 }
 
 /// A class which mocks [NumberTriviaRemoteDataSource].
@@ -197,7 +198,7 @@ class MockNumberTriviaLocalDataSource extends _i1.Mock
           as _i8.Future<_i6.NumberTriviaModel>);
 
   @override
-  _i8.Future<void> cacheNumberTrivia(_i10.NumberTrivia? triviaToCache) =>
+  _i8.Future<void> cacheNumberTrivia(_i6.NumberTriviaModel? triviaToCache) =>
       (super.noSuchMethod(
             Invocation.method(#cacheNumberTrivia, [triviaToCache]),
             returnValue: _i8.Future<void>.value(),

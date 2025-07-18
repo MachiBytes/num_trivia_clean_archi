@@ -4,7 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:number_trivia_clean_arch/core/errors/exception.dart';
 import 'package:number_trivia_clean_arch/core/errors/failure.dart';
-import 'package:number_trivia_clean_arch/core/platform/network_info.dart';
+import 'package:number_trivia_clean_arch/core/network/network_info.dart';
 import 'package:number_trivia_clean_arch/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:number_trivia_clean_arch/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
 import 'package:number_trivia_clean_arch/features/number_trivia/data/models/number_trivia_model.dart';
@@ -105,7 +105,7 @@ void main() {
           await repository.getConcreteNumberTrivia(tNumber);
           // assert
           verify(mockRemoteDataSource.getConcreteNumberTrivia(tNumber));
-          verify(mockLocalDataSource.cacheNumberTrivia(tNumberTrivia));
+          verify(mockLocalDataSource.cacheNumberTrivia(tNumberTriviaModel));
         },
       );
 
@@ -207,7 +207,7 @@ void main() {
           await repository.getRandomNumberTrivia();
           // assert
           verify(mockRemoteDataSource.getRandomNumberTrivia());
-          verify(mockLocalDataSource.cacheNumberTrivia(tNumberTrivia));
+          verify(mockLocalDataSource.cacheNumberTrivia(tNumberTriviaModel));
         },
       );
 

@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:number_trivia_clean_arch/core/errors/exception.dart';
 import 'package:number_trivia_clean_arch/core/errors/failure.dart';
-import 'package:number_trivia_clean_arch/core/platform/network_info.dart';
+import 'package:number_trivia_clean_arch/core/network/network_info.dart';
 import 'package:number_trivia_clean_arch/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:number_trivia_clean_arch/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
-import 'package:number_trivia_clean_arch/features/number_trivia/domain/entities/number_trivia.dart';
+import 'package:number_trivia_clean_arch/features/number_trivia/data/models/number_trivia_model.dart';
 import 'package:number_trivia_clean_arch/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 
-typedef _ConcreteOrRandomChooser = Future<NumberTrivia> Function();
+typedef _ConcreteOrRandomChooser = Future<NumberTriviaModel> Function();
 
 class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   final NumberTriviaRemoteDataSource remoteDataSource;
@@ -21,7 +21,7 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   });
 
   @override
-  Future<Either<Failure, NumberTrivia>> getConcreteNumberTrivia(
+  Future<Either<Failure, NumberTriviaModel>> getConcreteNumberTrivia(
     int number,
   ) async {
     return await _getTrivia(() {
@@ -30,13 +30,13 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   }
 
   @override
-  Future<Either<Failure, NumberTrivia>> getRandomNumberTrivia() async {
+  Future<Either<Failure, NumberTriviaModel>> getRandomNumberTrivia() async {
     return await _getTrivia(() {
       return remoteDataSource.getRandomNumberTrivia();
     });
   }
 
-  Future<Either<Failure, NumberTrivia>> _getTrivia(
+  Future<Either<Failure, NumberTriviaModel>> _getTrivia(
     _ConcreteOrRandomChooser getConcreteOrRandom,
   ) async {
     if (await networkInfo.isConnected) {
